@@ -3,14 +3,14 @@ const columns = 10;
 const minesCount = 10;
 const mines = [];
 
-function plantMines() {
+const plantMines = () => {
   for (let i = 0; i < minesCount; i += 1) {
     mines.push([Math.floor(Math.random() * rows), Math.floor(Math.random() * columns)])
   }
   console.log(`Mines in ${mines}`);
 }
 
-function hasMine(row, col) {
+const hasMine = (row, col) => {
   let mine = false;
   mines.forEach((m) => {
     if(m[0] === row && m[1] === col) {
@@ -22,7 +22,7 @@ function hasMine(row, col) {
 
 }
 
-function countNeighbornsMines(row, col) {
+const countNeighbornsMines = (row, col) => {
   let count = 0;
   if (hasMine(row-1, col - 1)) { count += 1; }
   if (hasMine(row-1, col)) { count += 1; }
@@ -37,7 +37,7 @@ function countNeighbornsMines(row, col) {
 }
 
 
-function openTile(tile){
+const openTile = (tile) => {
   const row = parseInt(tile.dataset.row)
   const col = parseInt(tile.dataset.col)
   console.log(`click em row=${row} e col=${col}`)
@@ -57,7 +57,7 @@ function openTile(tile){
   }
 }
 
-function grid() {
+const grid = () => {
   const table = document.createElement('table');
   table.setAttribute('id', 'minesweeper')
 
